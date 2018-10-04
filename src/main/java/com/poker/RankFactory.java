@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class RankFactory {
 
-
     public Rank getRank(String hand){
 
         String[] splitHand = hand.split(" ");
@@ -101,7 +100,6 @@ public class RankFactory {
             return false;
         }
         for (int i = 0; i < splitHand.length; i++) {
-            // compare suit
             if(splitHand[i].charAt(0) != ROYAL_FLUSH[i].charAt(0)){
                 return false;
             }
@@ -125,18 +123,15 @@ public class RankFactory {
 
     private boolean isFullHouse(HashMap<Character, Integer> cards){
 
-        boolean hasThree= false, hasTwo = false;
+        boolean hasThree= false;
 
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
-            if(characterIntegerEntry.getValue() == 2){
-                hasTwo = true;
-            }
 
             if(characterIntegerEntry.getValue() == 3){
                 hasThree = true;
             }
         }
-        return (hasThree && hasTwo);
+        return isPair(cards) && hasThree; //&& is(hasThree && hasTwo);
     }
 
     private boolean isFourOfAKind(HashMap<Character, Integer> cards){
