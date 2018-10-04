@@ -1,0 +1,4 @@
+com\poker\PokerHand.class
+com\poker\PokerHandInterface.class
+com\poker\CardValidator.class
+com\poker\PokerHand$Result.class
