@@ -1,6 +1,5 @@
 package com.poker;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ class RankFactoryTest {
     @Test
     public void get_royal_flush(){
         String hand = "Th Jh Qh Kh Ah";
-        assertEquals(Rank.ROYAL_FLIUSH,rankFactory.getRank(hand));
+        assertEquals(Rank.ROYAL_FLUSH,rankFactory.getRank(hand));
     }
 
     @Test
@@ -77,8 +76,32 @@ class RankFactoryTest {
     }
 
     @Test
-    void get_straight_with_letters() {
+    void get_straight_with_one_letters() {
         String hand = "6s 7h 8c 9d Td";
         assertEquals(Rank.STRAIGHT,rankFactory.getRank(hand));
+    }
+
+    @Test
+    void straight_with_letters(){
+        String hand = "7s 8c 9d Td Jd";
+        assertEquals(Rank.STRAIGHT,rankFactory.getRank(hand));
+    }
+
+    @Test
+    void straight_with_letters_q_boundary(){
+        String hand = "8s 9c Td Jd Qd";
+        assertEquals(Rank.STRAIGHT,rankFactory.getRank(hand));
+    }
+
+    @Test
+    void straight_with_letters_k_boundary(){
+        String hand = "9c Td Jd Qd Kh";
+        assertEquals(Rank.STRAIGHT,rankFactory.getRank(hand));
+    }
+
+    @Test
+    void test_high_card(){
+        String hand = "As Kh 4c 10d 8d";
+        assertEquals(Rank.HIGH_CARD,rankFactory.getRank(hand));
     }
 }

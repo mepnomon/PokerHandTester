@@ -10,6 +10,10 @@ public class RankFactory {
         String[] splitHand = hand.split(" ");
         HashMap<Character, Integer> cards = getCharacterIntegerHashMap(splitHand);
 
+        if(isRoyalFlush(splitHand)){
+            return Rank.ROYAL_FLUSH;
+        }
+
         if(isStraightFlush(splitHand)){
             return Rank.STRAIGHT_FLUSH;
         }
@@ -22,9 +26,6 @@ public class RankFactory {
             return Rank.FULL_HOUSE;
         }
 
-        if(isRoyalFlush(splitHand)){
-            return Rank.ROYAL_FLIUSH;
-        }
 
         if(isStraight(splitHand)){
             return Rank.STRAIGHT;
@@ -45,6 +46,7 @@ public class RankFactory {
         if(isPair(cards)){
             return Rank.ONE_PAIR;
         }
+
         return Rank.HIGH_CARD;
     }
 
@@ -63,7 +65,6 @@ public class RankFactory {
     }
 
     private boolean isPair(HashMap<Character, Integer> cards) {
-
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
             if(characterIntegerEntry.getValue() == 2){
                 return true;
@@ -73,11 +74,10 @@ public class RankFactory {
     }
 
     private boolean isThreeOfAKind(HashMap<Character, Integer> cards) {
-
         boolean hasThree = false;
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
 
-            if(characterIntegerEntry.getValue() == 3){
+            if (characterIntegerEntry.getValue() == 3 ) {
                 hasThree = true;
             }
         }
@@ -87,7 +87,7 @@ public class RankFactory {
     private boolean isStraight(String[] splitHand) {
         for (int i = 1; i < splitHand.length; i++) {
 
-            if((splitHand[i-1].charAt(0)+1) != (splitHand[i].charAt(0))){
+            if (next(splitHand[i-1].charAt(0)) != (splitHand[i].charAt(0))) {
                 return false;
             }
         }
@@ -95,17 +95,13 @@ public class RankFactory {
     }
 
     private boolean isRoyalFlush(String[] splitHand) {
-        final String[] ROYAL_FLUSH = {"T","J","Q","K","A"};
-        if(!isFlush(splitHand)){
+        if (!isStraightFlush(splitHand)) {
             return false;
         }
-        for (int i = 0; i < splitHand.length; i++) {
-            if(splitHand[i].charAt(0) != ROYAL_FLUSH[i].charAt(0)){
-                return false;
-            }
-
+        if(splitHand[4].charAt(0) == 'A'){
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean isFlush(String[] splitHand) {
@@ -122,9 +118,7 @@ public class RankFactory {
     }
 
     private boolean isFullHouse(HashMap<Character, Integer> cards){
-
         boolean hasThree= false;
-
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
 
             if(characterIntegerEntry.getValue() == 3){
@@ -135,7 +129,6 @@ public class RankFactory {
     }
 
     private boolean isFourOfAKind(HashMap<Character, Integer> cards){
-
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
             if(characterIntegerEntry.getValue() == 4){
                 return true;
@@ -146,7 +139,6 @@ public class RankFactory {
 
     private HashMap<Character, Integer> getCharacterIntegerHashMap(String[] splitHand) {
         HashMap<Character, Integer> cards = new HashMap<>();
-
         for (String s : splitHand) {
             if(!cards.containsKey(s.charAt(0))){
                 cards.put(s.charAt(0),1);
@@ -156,5 +148,18 @@ public class RankFactory {
             }
         }
         return cards;
+    }
+
+    private char next(char face){
+
+
+        switch(face){
+            case '9': return 'T';
+            case 'T': return 'J';
+            case 'J': return 'Q';
+            case 'Q': return 'K';
+            case 'K': return 'A';
+        }
+        return (char) (face+1);
     }
 }

@@ -2,7 +2,7 @@ package com.poker;
 
 public enum Rank {
 
-    ROYAL_FLIUSH(10),
+    ROYAL_FLUSH(10),
     STRAIGHT_FLUSH(9),
     FOUR_OF_A_KIND(8),
     FULL_HOUSE(7),
@@ -18,5 +18,9 @@ public enum Rank {
 
     private Rank(int rank) {
         this.rank = rank;
+    }
+
+    public int value(){
+        return rank;
     }
 }

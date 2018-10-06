@@ -1,9 +1,8 @@
 package com.poker;
 
-public class PokerHand {
+import static java.lang.String.valueOf;
 
-	private final int NUMBER_OF_SUITS = 5;
-	StringBuilder rankStore;
+public class PokerHand {
 
 	public enum Result {
 		WIN,
@@ -19,26 +18,54 @@ public class PokerHand {
 
 		this.rankFactory = rankFactory;
 		this.hand = hand;
-		rankStore = new StringBuilder();
 	}
 
-	public Result compareWith(PokerHand hand) {
-		extractRank();
-		 return Result.TIE;
+	public Result compareWith(PokerHand opponentsHand) {
+
+		Rank opponentsRank = opponentsHand.getRank();
+
+		if(getRank().value() < opponentsHand.getRank().value()){
+			return Result.LOSS;
+		}
+
+		if(getRank().value() > opponentsHand.getRank().value()){
+			return Result.WIN;
+		}
+		return compareHighCard(opponentsHand, opponentsRank);
 	}
 
-	private void extractRank(){
-		rankStore.append(hand.charAt(0));
-		rankStore.append(hand.charAt(3));
-		rankStore.append(hand.charAt(6));
-		rankStore.append(hand.charAt(9));
-		rankStore.append(hand.charAt(12));
+	private Result compareHighCard(PokerHand opponentsHand, Rank opponentsRank) {
 
-		System.out.println("extracted " + rankStore);
+			if (getHighestCard().value() < opponentsHand.getHighestCard().value()) {
+				return Result.LOSS;
+			}
+
+			if (getHighestCard().value() > opponentsHand.getHighestCard().value()){
+				return Result.WIN;
+			}
+		return Result.TIE;
 	}
 
-	private void evaluateRank (String hand){
+	public Card getHighestCard() {
+		String[] splitHand = hand.split(" ");
+		Card highestCard = Card.stringToCard(valueOf(splitHand[0].charAt(0)));
 
+		for (int i = 1; i < splitHand.length; i++) {
+			Card card =  Card.stringToCard(valueOf(splitHand[i].charAt(0)));
+			if (highestCard.value() < card.value()) {
+				highestCard = card;
+			}
+		}
+		return highestCard;
 	}
 
+	public String getHand(){
+		return hand;
+	}
+
+
+	public Rank getRank(){
+
+		return rankFactory.getRank(hand);
+	}
 }
