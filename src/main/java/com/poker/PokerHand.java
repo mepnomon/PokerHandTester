@@ -19,6 +19,10 @@ public class PokerHand {
 		TIE;
 	}
 
+    /**
+     * Constructs a PokerHand
+     * @param hand a string with the Poker Cards
+     */
 	public PokerHand(String hand) {
 
 		this.rankFactory = new RankFactory();
@@ -42,7 +46,6 @@ public class PokerHand {
 		if(getRank().value() > opponentsHand.getRank().value()){
 			return Result.WIN;
 		}
-
 
 		return compareHighCard(opponentsHand);
 	}
@@ -148,7 +151,6 @@ public class PokerHand {
 
 
 	public Rank getRank(){
-
 		return rankFactory.getRank(hand);
 	}
 
