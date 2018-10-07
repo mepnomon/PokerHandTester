@@ -54,8 +54,8 @@ public class PokerHand {
 
 		int mySum = 0;
 		int opponentSum = 0;
-		HashMap<String, Integer> cardMap = getStringIntegerHashMap(cardStringToArray(opponentsHand.getHand()));
-		HashMap<String, Integer> opponentCardMap = getStringIntegerHashMap(cardStringToArray(getHand()));
+		HashMap<String, Integer> cardMap = getStringIntegerHashMap(cardStringToArray(getHand()));
+		HashMap<String, Integer> opponentCardMap = getStringIntegerHashMap(cardStringToArray(opponentsHand.getHand()));
 		Card[] myHighestCard = extractHighestCardsFromMap(cardMap);
 		Card[] opponentHighestCard = extractHighestCardsFromMap(opponentCardMap);
 
