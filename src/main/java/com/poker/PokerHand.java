@@ -101,11 +101,11 @@ public class PokerHand {
 
 	private Card[] extractHighestCardsFromMap(HashMap<String, Integer> cards){
 		Card[] highestCards = new Card[2];
-		int count = 0;
+		int index = 0;
 		for (Map.Entry<String, Integer> stringIntegerEntry : cards.entrySet()) {
 			if (stringIntegerEntry.getValue() == 2 ) {
-				highestCards[count] = Card.stringToCard(valueOf(stringIntegerEntry.getKey().charAt(0)));
-				count++;
+				highestCards[index] = Card.stringToCard(valueOf(stringIntegerEntry.getKey().charAt(0)));
+				index++;
 			}
 		}
 		return highestCards;
