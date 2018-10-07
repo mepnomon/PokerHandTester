@@ -5,6 +5,7 @@ import java.util.Map;
 import static java.lang.String.valueOf;
 
 /**
+ * A class to compare PokerHands.
  * @author D. Dressler
  */
 public class PokerHand {
