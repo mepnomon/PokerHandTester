@@ -7,7 +7,8 @@ The PokerHand Class handles user input and takes the user's hand as a parameter 
 A  general assumption here is that users will NOT cheat and will only supply valid hands and cards (happy-path).
 E.g. a user will not pass 5 Aces in as parameters.
 Allowed cards include values: 2,3,4,5,6,7,8,9,T,J,Q,K
-and suits: H(earts), D(iamonds), C(lubs), S(pades). THese will need to be supplied as a string to the PokerHand class.
+and suits: h(earts), d(iamonds), c(lubs), s(pades). THese will need to be supplied as a string to the PokerHand class.
+Example: ""Ah As Ac Td 7s" - further examples can be seen in the PokerHandTest class.
 
 The PokerHand integrates the RankFactory class and compares the hands.
 Public accessors in this class are getHighestCard (public for testing purposes only), compareWith which takes the
