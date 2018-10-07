@@ -4,16 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 import static java.lang.String.valueOf;
 
+/**
+ * @author D. Dressler
+ */
 public class PokerHand {
+
+	private String hand;
+	private RankFactory rankFactory;
 
 	public enum Result {
 		WIN,
 		LOSS,
 		TIE;
 	}
-
-	private String hand;
-	private RankFactory rankFactory;
 
 	public PokerHand(String hand) {
 
@@ -30,6 +33,7 @@ public class PokerHand {
 		if(getRank() == Rank.THREE_OF_A_KIND && opponentsHand.getRank() == Rank.THREE_OF_A_KIND){
 			return getHigherThreeOfAKind(opponentsHand);
 		}
+
 		if(getRank().value() < opponentsHand.getRank().value()){
 			return Result.LOSS;
 		}
@@ -43,15 +47,14 @@ public class PokerHand {
 	}
 
 	private Result getHighestTwoPairs(PokerHand opponentsHand){
-		final int OCCURRENCE = 2;
-		String[] opponentsCards = cardStringToArray(opponentsHand.getHand());
-		String[] myCards = cardStringToArray(getHand());
-		HashMap<String, Integer> cardMap = getStringIntegerHashMap(myCards);
-		HashMap<String, Integer> oppopentCardMap = getStringIntegerHashMap(opponentsCards);
-		Card[] myHighestCard = extractHighestCardsFromMap(cardMap);
-		Card[] opponentHighestCard = extractHighestCardsFromMap(oppopentCardMap);
+
 		int mySum = 0;
 		int opponentSum = 0;
+		HashMap<String, Integer> cardMap = getStringIntegerHashMap(cardStringToArray(opponentsHand.getHand()));
+		HashMap<String, Integer> opponentCardMap = getStringIntegerHashMap(cardStringToArray(getHand()));
+		Card[] myHighestCard = extractHighestCardsFromMap(cardMap);
+		Card[] opponentHighestCard = extractHighestCardsFromMap(opponentCardMap);
+
 		for(int i = 0; i < myHighestCard.length; i++){
 			mySum += myHighestCard[i].value();
 			opponentSum += opponentHighestCard[i].value();
@@ -73,9 +76,9 @@ public class PokerHand {
 		String[] opponentsCards = cardStringToArray(opponentsHand.getHand());
 		String[] myCards = cardStringToArray(getHand());
 		HashMap<String, Integer> cardMap = getStringIntegerHashMap(myCards);
-		HashMap<String, Integer> oppopentCardMap = getStringIntegerHashMap(opponentsCards);
+		HashMap<String, Integer> opponentCardMap = getStringIntegerHashMap(opponentsCards);
 		Card myHighestCard = extractHighestCardFromMap(cardMap,OCCURRENCE);
-		Card opponentHighestCard = extractHighestCardFromMap(oppopentCardMap, OCCURRENCE);
+		Card opponentHighestCard = extractHighestCardFromMap(opponentCardMap, OCCURRENCE);
 
 		if(myHighestCard.value() < opponentHighestCard.value()){
 			return Result.LOSS;
@@ -87,8 +90,6 @@ public class PokerHand {
 
 		return Result.TIE;
 	}
-
-
 
 	private String[] cardStringToArray(String hand){
 		return hand.split(" ");
@@ -117,14 +118,13 @@ public class PokerHand {
 	}
 
 	private Result compareHighCard(PokerHand opponentsHand) {
+		if (getHighestCard().value() < opponentsHand.getHighestCard().value()) {
+			return Result.LOSS;
+		}
 
-			if (getHighestCard().value() < opponentsHand.getHighestCard().value()) {
-				return Result.LOSS;
-			}
-
-			if (getHighestCard().value() > opponentsHand.getHighestCard().value()){
-				return Result.WIN;
-			}
+		if (getHighestCard().value() > opponentsHand.getHighestCard().value()){
+			return Result.WIN;
+		}
 		return Result.TIE;
 	}
 

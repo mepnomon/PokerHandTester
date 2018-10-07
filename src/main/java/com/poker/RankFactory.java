@@ -3,6 +3,11 @@ package com.poker;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * RankFactory.
+ * A factory determining Poker Hand ranks, based on supplied cards.
+ * @author D. ressler
+ */
 public class RankFactory {
 
     public Rank getRank(String hand){
@@ -25,7 +30,6 @@ public class RankFactory {
         if(isFullHouse(cards)){
             return Rank.FULL_HOUSE;
         }
-
 
         if(isStraight(splitHand)){
             return Rank.STRAIGHT;
@@ -60,7 +64,6 @@ public class RankFactory {
         if(pairCount != 2) {
             return false;
         }
-
         return true;
     }
 
@@ -74,19 +77,16 @@ public class RankFactory {
     }
 
     private boolean isThreeOfAKind(HashMap<Character, Integer> cards) {
-        boolean hasThree = false;
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
-
             if (characterIntegerEntry.getValue() == 3 ) {
-                hasThree = true;
+                return true;
             }
         }
-        return hasThree;
+        return false;
     }
 
     private boolean isStraight(String[] splitHand) {
         for (int i = 1; i < splitHand.length; i++) {
-
             if (next(splitHand[i-1].charAt(0)) != (splitHand[i].charAt(0))) {
                 return false;
             }
@@ -118,14 +118,7 @@ public class RankFactory {
     }
 
     private boolean isFullHouse(HashMap<Character, Integer> cards){
-        boolean hasThree= false;
-        for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
-
-            if(characterIntegerEntry.getValue() == 3){
-                hasThree = true;
-            }
-        }
-        return isPair(cards) && hasThree; //&& is(hasThree && hasTwo);
+        return isPair(cards) && isThreeOfAKind(cards);
     }
 
     private boolean isFourOfAKind(HashMap<Character, Integer> cards){
@@ -151,8 +144,6 @@ public class RankFactory {
     }
 
     private char next(char face){
-
-
         switch(face){
             case '9': return 'T';
             case 'T': return 'J';

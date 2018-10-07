@@ -17,7 +17,7 @@ public class PokerHandTest {
 		rankFactory = new RankFactory();
 	}
 
-	@Test //(expected = IllegalArgumentException.class)
+	@Test
 	public void new_hand_test_null() {
 		new PokerHand(null);
 	}
