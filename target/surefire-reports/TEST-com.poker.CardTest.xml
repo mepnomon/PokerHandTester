@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.poker.PokerHandTest" time="0.001" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.poker.CardTest" time="0.18" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -60,19 +60,17 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="four_of_a_kind_wins" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="two_pairs_wins" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="higher_flush_wins" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="flush_wins" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="royal_flush_tie" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="royal_flush_win" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="four_of_a_kind_higher_win" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="straight_flush_higher_win" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="three_of_a_kind_wins" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="high_card_win" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="get_highest_card_ace" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="three_of_a_kind_highest_cards_win" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="two_pairs_highest_pair_wins" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="straight_wins" classname="com.poker.PokerHandTest" time="0"/>
-  <testcase name="new_hand_test_null" classname="com.poker.PokerHandTest" time="0"/>
+  <testcase name="number_to_card{String, Card}[1]" classname="com.poker.CardTest" time="0.042"/>
+  <testcase name="number_to_card{String, Card}[2]" classname="com.poker.CardTest" time="0.001"/>
+  <testcase name="number_to_card{String, Card}[3]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="number_to_card{String, Card}[4]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="number_to_card{String, Card}[5]" classname="com.poker.CardTest" time="0.001"/>
+  <testcase name="number_to_card{String, Card}[6]" classname="com.poker.CardTest" time="0.001"/>
+  <testcase name="number_to_card{String, Card}[7]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="number_to_card{String, Card}[8]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="letter_to_card{String, Card}[1]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="letter_to_card{String, Card}[2]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="letter_to_card{String, Card}[3]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="letter_to_card{String, Card}[4]" classname="com.poker.CardTest" time="0"/>
+  <testcase name="letter_to_card{String, Card}[5]" classname="com.poker.CardTest" time="0.001"/>
 </testsuite>

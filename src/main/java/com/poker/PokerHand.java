@@ -59,7 +59,7 @@ public class PokerHand {
 		Card[] myHighestCard = extractHighestCardsFromMap(cardMap);
 		Card[] opponentHighestCard = extractHighestCardsFromMap(opponentCardMap);
 
-		for(int i = 0; i < myHighestCard.length; i++){
+		for (int i = 0; i < myHighestCard.length; i++){
 			mySum += myHighestCard[i].value();
 			opponentSum += opponentHighestCard[i].value();
 		}
@@ -84,11 +84,11 @@ public class PokerHand {
 		Card myHighestCard = extractHighestCardFromMap(cardMap);
 		Card opponentHighestCard = extractHighestCardFromMap(opponentCardMap);
 
-		if(myHighestCard.value() < opponentHighestCard.value()){
+		if (myHighestCard.value() < opponentHighestCard.value()){
 			return Result.LOSS;
 		}
 
-		if(myHighestCard.value() > opponentHighestCard.value()){
+		if (myHighestCard.value() > opponentHighestCard.value()){
 			return Result.WIN;
 		}
 
@@ -158,7 +158,7 @@ public class PokerHand {
 		HashMap<String, Integer> cards = new HashMap<>();
 
 		for (String s : splitHand) {
-			if(!cards.containsKey(valueOf(s.charAt(0)))){
+			if (!cards.containsKey(valueOf(s.charAt(0)))){
 				cards.put(valueOf(s.charAt(0)),1);
 			} else {
 				Integer value = cards.get(valueOf((s.charAt(0))));
