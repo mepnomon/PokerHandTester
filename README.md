@@ -1,5 +1,6 @@
 Poker Hand Tester:
 
+About:
 This program can be used to compare Poker Hands, following the Texas Hold 'em rules.
 
 The PokerHand Class handles user input and takes the user's hand as a parameter as well as the opposing player's hand.
@@ -23,8 +24,9 @@ A Rank Enum provides a rank for a given poker hand, also allowing for value comp
 The RankFactory class contains a single public method getRank, which returns the rank of the supplied hand.
 The logic for
 
-The application can be imported using maven and was written using a TDD-approach (therefore all classes have unit test
-coverage). Unit testing is achieved by using JUnit5.
-
 Direct user input was not part of the specification, therefore it is assumed that the unit tests provided are sufficient.
 However, a simple main method instantiating the PokerHand object can be added to test it.
+
+Importing it:
+The application can be imported and built into an ide of your choice, using maven and was written using a TDD-approach
+(therefore all classes have unit test coverage). Unit testing is achieved by using JUnit5.
