@@ -74,6 +74,7 @@ public class PokerHand {
 
 		return Result.TIE;
 	}
+	
 	private Result getHigherThreeOfAKind(PokerHand opponentsHand){
 
 		final int OCCURRENCE = 3;
