@@ -74,16 +74,15 @@ public class PokerHand {
 
 		return Result.TIE;
 	}
-	
+
 	private Result getHigherThreeOfAKind(PokerHand opponentsHand){
 
-		final int OCCURRENCE = 3;
 		String[] opponentsCards = cardStringToArray(opponentsHand.getHand());
 		String[] myCards = cardStringToArray(getHand());
 		HashMap<String, Integer> cardMap = getStringIntegerHashMap(myCards);
 		HashMap<String, Integer> opponentCardMap = getStringIntegerHashMap(opponentsCards);
-		Card myHighestCard = extractHighestCardFromMap(cardMap,OCCURRENCE);
-		Card opponentHighestCard = extractHighestCardFromMap(opponentCardMap, OCCURRENCE);
+		Card myHighestCard = extractHighestCardFromMap(cardMap);
+		Card opponentHighestCard = extractHighestCardFromMap(opponentCardMap);
 
 		if(myHighestCard.value() < opponentHighestCard.value()){
 			return Result.LOSS;
@@ -112,10 +111,10 @@ public class PokerHand {
 		return highestCards;
 	}
 
-	private Card extractHighestCardFromMap(HashMap<String, Integer> cards, int occurrence){
+	private Card extractHighestCardFromMap(HashMap<String, Integer> cards){
 		Card highestCard = null;
 		for (Map.Entry<String, Integer> stringIntegerEntry : cards.entrySet()) {
-			if (stringIntegerEntry.getValue() == occurrence ) {
+			if (stringIntegerEntry.getValue() == 3 ) {
 				highestCard = Card.stringToCard(valueOf(stringIntegerEntry.getKey().charAt(0)));
 			}
 		}
