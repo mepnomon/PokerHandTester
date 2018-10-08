@@ -59,14 +59,12 @@ class RankFactoryTest {
     void get_three_of_a_kind(){
         String hand = "9s 9h 9c 6d 2d";
         assertEquals(Rank.THREE_OF_A_KIND,rankFactory.getRank(hand));
-
     }
 
     @Test
     void get_one_pair(){
         String hand = "6c 6h 3c Qd Td";
         assertEquals(Rank.ONE_PAIR,rankFactory.getRank(hand));
-
     }
 
     @Test
