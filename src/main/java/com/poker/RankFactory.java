@@ -15,39 +15,39 @@ public class RankFactory {
         String[] splitHand = hand.split(" ");
         HashMap<Character, Integer> cards = getCharacterIntegerHashMap(splitHand);
 
-        if(isRoyalFlush(splitHand)){
+        if (isRoyalFlush(splitHand)) {
             return Rank.ROYAL_FLUSH;
         }
 
-        if(isStraightFlush(splitHand)){
+        if (isStraightFlush(splitHand)) {
             return Rank.STRAIGHT_FLUSH;
         }
 
-        if(isFourOfAKind(cards)){
+        if (isFourOfAKind(cards)) {
             return Rank.FOUR_OF_A_KIND;
         }
 
-        if(isFullHouse(cards)){
+        if (isFullHouse(cards)) {
             return Rank.FULL_HOUSE;
         }
 
-        if(isStraight(splitHand)){
+        if (isStraight(splitHand)) {
             return Rank.STRAIGHT;
         }
 
-        if(isFlush(splitHand)){
+        if (isFlush(splitHand)) {
             return Rank.FLUSH;
         }
 
-        if(isThreeOfAKind(cards)){
+        if (isThreeOfAKind(cards)) {
             return Rank.THREE_OF_A_KIND;
         }
 
-        if(isTwoPairs(cards)){
+        if (isTwoPairs(cards)) {
             return Rank.TWO_PAIRS;
         }
 
-        if(isPair(cards)){
+        if (isPair(cards)) {
             return Rank.ONE_PAIR;
         }
 
@@ -57,7 +57,7 @@ public class RankFactory {
     private boolean isTwoPairs(HashMap<Character, Integer> cards) {
         int pairCount = 0;
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
-            if(characterIntegerEntry.getValue() == 2){
+            if (characterIntegerEntry.getValue() == 2){
                 ++pairCount;
             }
         }
@@ -69,7 +69,7 @@ public class RankFactory {
 
     private boolean isPair(HashMap<Character, Integer> cards) {
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
-            if(characterIntegerEntry.getValue() == 2){
+            if (characterIntegerEntry.getValue() == 2) {
                 return true;
             }
         }
@@ -106,7 +106,7 @@ public class RankFactory {
 
     private boolean isFlush(String[] splitHand) {
         for (int i = 1; i < splitHand.length; i++) {
-            if(splitHand[i].charAt(1) != splitHand[i-1].charAt(1)){
+            if (splitHand[i].charAt(1) != splitHand[i-1].charAt(1)) {
                 return false;
             }
         }
@@ -123,7 +123,7 @@ public class RankFactory {
 
     private boolean isFourOfAKind(HashMap<Character, Integer> cards){
         for (Map.Entry<Character, Integer> characterIntegerEntry : cards.entrySet()) {
-            if(characterIntegerEntry.getValue() == 4){
+            if (characterIntegerEntry.getValue() == 4) {
                 return true;
             }
         }
@@ -133,7 +133,7 @@ public class RankFactory {
     private HashMap<Character, Integer> getCharacterIntegerHashMap(String[] splitHand) {
         HashMap<Character, Integer> cards = new HashMap<>();
         for (String s : splitHand) {
-            if(!cards.containsKey(s.charAt(0))){
+            if (!cards.containsKey(s.charAt(0))) {
                 cards.put(s.charAt(0),1);
             } else {
                 Integer value = cards.get(s.charAt(0));
